@@ -14,7 +14,9 @@ jobs:
           - name: Checkout submodules
             run : git submodule update --init --recursive
           - name: Run unit test
-            run: ./unit-test.sh
+            run: |
+                /usr/bin/git config --global --unset http.proxy
+                ./unit-test.sh
     full-test:
         container: cuaesd/aesd-autotest:assignment1
         runs-on: self-hosted
